@@ -10,7 +10,7 @@ function[x] = Substitute(a, o, n, b)
     for i = n-1:-1:1
         sum = 0;
         for j = i+1:n
-            sum = sum + a(o(i), j) + x(j);
+            sum = sum + a(o(i), j) * x(j);
         end
         x(i) = (b(o(i)) - sum) / a(o(i),i);
     end
