@@ -17,6 +17,6 @@ function[] = SanityCheck(n)
         err = err + norm(x1 - x2) / n(i);
     end
 
-    disp(err / length(n));
+    fprintf('Difference between intrinsic and our method is %0.5f \n', err / length(n));
 
 end
