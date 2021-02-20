@@ -1,14 +1,22 @@
-function[] = Q2(n, test_time)
+function[] = Q2(n, test_time, tol)
+%% function scope for Q2, calc
+% n: a range like 200:50:800;
+% test_time: how many times the method runs for each n
+    if nargin < 3 || isempty(tol)
+        tol = 0.001;
+    end
+
     t1 = length(n);
     t2 = length(n);
     
     for i = 1:length(n)
         A = rand(n(i), n(i));
-        b = rand(n(i), 1);
+%         b = rand(n(i), 1);
         temp = 0;
         for j = 1:test_time
             tic
-            x1 = A\b;
+%             x1 = A\b;
+            lu(A);
             temp = temp + toc;
         end
         t1(i) = temp / test_time;
@@ -17,7 +25,8 @@ function[] = Q2(n, test_time)
         temp = 0;
         for j = 1:test_time
             tic
-            x2 = LuDecom(A, b, n(i), 0.001);
+%             x2 = LuDecom(A, b, n(i), tol);
+            Decompose(A,n(i), tol);
             temp = temp + toc;
         end
         t2(i) = temp / test_time;
@@ -36,7 +45,7 @@ function[] = Q2(n, test_time)
     plot(n, t1, '-o', n, f1, '-');
     xlabel('log10( Matrix Size n )') %add an x label
     ylabel('log10( Time in second )') % add a y label
-    title('Q2 intrinsic method')
+    title('LU intrinsic method')
     legend('data','linear fit')
     text(n( centerPos ), f1( centerPos ) - 0.08, txt1);
 
@@ -47,7 +56,7 @@ function[] = Q2(n, test_time)
     plot(n, t2, '-o', n, f2, '-');
     xlabel('log10( Matrix Size n )') %add an x label
     ylabel('log10( Time in second )') % add a y label
-    title('Q2 our method')
+    title('LU our method')
     legend('data','linear fit')
     text(n( centerPos ), f2( centerPos ) - 0.08, txt2);
 end
