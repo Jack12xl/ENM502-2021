@@ -3,19 +3,19 @@
 SanityCheck(10:2:20);
 
 %% Q2
-n = 256:32:512;
-test_time = 10;
+n = 256:32:768;
+test_time = 4;
 
 Q2(n, test_time);
 
 %% Q3_b
 %% 1D
-res = 128;
+res = 512;
 dim = 1;
 Q3_b(res, dim);
 
 %% 2D
-res = 32;
+res = 64;
 dim = 2;
 Q3_b(res, dim);
 
