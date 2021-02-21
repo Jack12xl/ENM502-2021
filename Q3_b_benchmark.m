@@ -20,7 +20,7 @@ function[] = Q3_b_benchmark(n, test_time, dim, tol, alpha)
         temp = 0;
         for j = 1:test_time
             tic
-            x2 = LuDecom(A, b, n(i), tol);
+            LuDecom(A, b, n(i), tol);
 %             Decompose(A,n(i), tol);
             temp = temp + toc;
         end
@@ -29,7 +29,7 @@ function[] = Q3_b_benchmark(n, test_time, dim, tol, alpha)
         temp = 0;
         for j = 1:test_time
             tic
-            x1 = A\b;
+            A\b;
             temp = temp + toc;
         end
         t1(i) = temp / test_time;
@@ -38,7 +38,7 @@ function[] = Q3_b_benchmark(n, test_time, dim, tol, alpha)
         
     end
 
-    n = log10(n);
+    n = log10(n.^2);
     t1 = log10(t1);
     t2 = log10(t2);
     sampleNum = length(n);

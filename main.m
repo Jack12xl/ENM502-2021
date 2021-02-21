@@ -21,7 +21,7 @@ Q3_b(res, dim);
 
 %% Q3_b
 % benchmark our method and intrinsic method
-Q3_b_benchmark(16:4:32, 4, 2);
+Q3_b_benchmark(16:2:32, 10, 2);
 
 %% Q3_c1
 % err on resolution
