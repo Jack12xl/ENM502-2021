@@ -126,3 +126,10 @@ We are solving the diffusion problem as defined in **problem 2**.
 | -------------------------- | --------------------------- |
 | ![](./results/p5_res.png)  | ![](./results/p5_alpha.png) |
 
+##### Error on resolution
+
+As the resolution goes up, the error gradually decreases.
+
+##### Error on α
+
+As the α goes up, the error also goes up linearly.
