@@ -4,13 +4,7 @@
 
 ### 2021-02-21
 
-### Assignment 2
-
-
-
-
-
-# LU Decomposition
+### Assignment 2 LU Decomposition
 
 
 
@@ -70,7 +64,7 @@ The linear system generating code( produce the `A`and `b`) is `DiffusionBVP.m`.
 
 ##### Notable findings:
 
-[xxx] Currently we haven't found notable findings 😓. Noticeably, the pattern showed in the 2D cases are becoming more and more rounded with the increasing of the grid resolution, which means the results are getting better due to increasing resolution of the grid.
+[xxx] Currently we haven't found notable findings 😓. Noticeably, the pattern showed in the 2D cases are becoming more and more rounded with the increasing of the grid resolution, which means the results are getting better due to the increasing resolution of the grid.
 
 #### Problem 4: Against the intrinsic Matlab LU function
 
