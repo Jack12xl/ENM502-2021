@@ -10,7 +10,7 @@
 
 ## Introduction
 
-In this homework we are about to implement the **LU decomposition** in Matlab. Basically, **lower–upper** (**LU**) **decomposition** or **factorization** factors a [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)) as the product of a lower [triangular matrix](https://en.wikipedia.org/wiki/Triangular_matrix) and an upper triangular matrix. The number of operations is about `O(n^3)`,
+In this homework we are about to implement the **LU decomposition** in Matlab. Basically, **lower–upper** (**LU**) **decomposition** or **factorization** factors a [matrix](https://en.wikipedia.org/wiki/Matrix_(mathematics)) as the product of a lower [triangular matrix](https://en.wikipedia.org/wiki/Triangular_matrix) and an upper triangular matrix. The number of operations is about `O(n^3)`, where n is the one dimension of the decomposed matrix.
 $$
 A=L U
 $$
@@ -46,7 +46,7 @@ The LU decomposition pipeline follows the pseudocode code. The relevant files ar
 
 #### Problem 2: Diffusion problem
 
-The diffusion problem is defined as[xxx]
+The diffusion problem is defined as
 $$
 \nabla^{2} T+\alpha=0 \quad \text { with } \quad T=0 \text{ on all boundaries}
 $$
@@ -67,8 +67,6 @@ The linear system generating code( produce the `A`and `b`) is `DiffusionBVP.m`.
 [xxx] Currently we haven't found notable findings 😓. Noticeably, the pattern showed in the 2D cases are becoming more and more rounded with the increasing of the grid resolution, which means the results are getting better due to the increasing resolution of the grid.
 
 #### Problem 4: Against the intrinsic Matlab LU function
-
-
 
 ##### Compare with Intrinsic method
 
@@ -92,13 +90,19 @@ From the Fig:3 and Fig:4, we could see that our method log curve is basically sc
 
 While the intrinsic `lu` scales with constant `2` if we apply linear fit( actually it is not from the Fig:3). Well the official `lu` document states that the complexity is also O(n^3). So there must be some inside "dirty" optimization trick with the `lu`.
 
+
+
 #####  Does the timing scale as you expect for **LU** in each case? Why or why not?
 
 From the `Fig:3~6`, the timing basically fit our expectation. However , there is still much `noise`, where makes the line does not fit perfectly on constant `3`.  
 
-From the view of **matrix bandwidth**, we guess the memory fetch(we refer to read) for the matrix `A` would cause a constant amount of time on the whole process. As the `n` (size of `A`) goes up, the whole pipeline is gradually dominated by the **LU decomposition** calculation itself. As we could see in `Fig:4`, after some oscillations one first small `n`, the line's slope gradually becomes around `3`.
+From the view of **memory bandwidth**, we guess the memory fetch(we refer to read) for the matrix `A` would cause a constant amount of time on the whole process. As the `n` (size of `A`) goes up, the whole pipeline is gradually dominated by the **LU decomposition** calculation itself. As we could see in `Fig:4`, after some oscillations one first small `n`, the line's slope gradually becomes around `3`.
 
 Besides this, some other process(like overhead of each operation) would surely add some constant on the whole performance. 
+
+##### 1D vs 2D
+
+Compared to **1D**, the matrix A of **2D** has a wider **matrix** **bandwidth** than cases in **1D**. Because the **2D** version would have **one more dimension** to take into consideration when building the matrix `A`. Since the current iterative techniques are generally more efficient for sparser matrices, so solving **2D** cases(with larger bandwidth) would have **more number of operations** than **1D** (assume  they are solving the same `A`).
 
 #### Problem 5: Plot the solution error
 
